@@ -15,7 +15,7 @@ $mail = new PHPMailer(true);
 
 try {
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
     $mail->isSMTP();
     $mail->Host       = 'smtp.example.com';
     $mail->SMTPAuth   = true;
@@ -26,11 +26,11 @@ try {
 
     //Envia email ao Cliente
     //Remetente
-    $mail->setFrom('user@example.com', 'Mailer'); //Remetente
-    $mail->addReplyTo('user@example.com', 'Mailer'); // responder para
+    $mail->setFrom('from@example.com', 'Mailer'); //Remetente
+    $mail->addReplyTo('info@example.com', 'Information'); // responder para
 
     //Destinatário
-    $mail->addAddress($dadosForm['email'], $dadosForm['nome']);     //Add a recipient
+    $mail->addAddress($dadosForm['email'], $dadosForm['nome']);    
 
     //Configuração do email
     $mail->isHTML(true); // Aceita HTML
@@ -42,11 +42,38 @@ try {
     $mail->Body    = $body;
     //$mail->AltBody = utf8_decode($dadosForm['mensg'] . "Enviado Via PHPMailer.\n");
     $mail->send();
-    echo 'Email Enviado';
+
+    /***/
+
+    //Envia email ao Colaborador
+
+    $mail->ClearAllRecipients(); //Limpar todos os que destinatiarios: TO, CC, BCC
+    //Remetente
+    $mail->setFrom('from@example.com', 'Mailer'); //Remetente
+    $mail->addReplyTo('info@example.com', 'Information'); // responder para
+
+    //Destinatário
+    $mail->addAddress("ellen@example.com", "ADM");     
+
+    //Configuração do email
+    $mail->isHTML(true); // Aceita HTML
+    $mail->Subject =utf8_decode($dadosForm['assunto'] . " Mesagem via site recebida");
+    $body2 = utf8_decode("Prezado(a)  Colaborador(a), Recebemos a mensagem de: <br>"
+    ."Nome: " . $dadosForm['nome'] . "<br>
+      E-mail: " . $dadosForm['email'] .
+    "<br> Assunto: " . $dadosForm['assunto'] . 
+    "<br> Conteúdo: " . $dadosForm['mensg'] . " <br> <strong>Por favor responder o mais breve possível</strong>");
+
+    $mail->Body    = $body2;
+    //$mail->AltBody = utf8_decode($dadosForm['mensg'] . "Enviado Via PHPMailer.\n");
+    $mail->send();
+
+    echo '<script>alert("Email Enviado");</script>';
+    echo '<script>window.location.href = "../../index.php";</script>';
    
 
     
 } catch (Exception $e) {
-    echo "A mensagem não pôde ser enviada. Erro de correspondência: {$mail->ErrorInfo}" . $e->getMessage();
+    echo '<script>alert("A mensagem não pôde ser enviada. Erro de correspondência: {$mail->ErrorInfo}");</script>';
 }
 }
