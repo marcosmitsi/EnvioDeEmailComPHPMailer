@@ -17,17 +17,17 @@ try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
     $mail->isSMTP();
-    $mail->Host       = 'smtp.titan.email';
+    $mail->Host       = 'smtp.example.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'no-reply@mitsi.com.br';
-    $mail->Password   = '&rDM22!9@7x7';
+    $mail->Username   = 'user@example.com';
+    $mail->Password   = 'password';
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
 
     //Envia email ao Cliente
     //Remetente
-    $mail->setFrom('no-reply@mitsi.com.br', 'Marcos Mitsi'); //Remetente
-    $mail->addReplyTo('no-reply@mitsi.com.br', 'Marcos Mitsi'); // responder para
+    $mail->setFrom('user@example.com', 'Mailer'); //Remetente
+    $mail->addReplyTo('user@example.com', 'Mailer'); // responder para
 
     //Destinatário
     $mail->addAddress($dadosForm['email'], $dadosForm['nome']);     //Add a recipient
