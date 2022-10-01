@@ -15,6 +15,6 @@
 - 
 
 ## 📁 Acesso ao projeto
-Você pode acessar os arquivos do projeto clicando [aqui](http://www.mitsi.com.br/).
+Você pode acessar o projeto clicando [aqui](http://www.mitsi.com.br/).
 
 
