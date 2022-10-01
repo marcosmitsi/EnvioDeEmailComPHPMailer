@@ -11,7 +11,7 @@
 ## ✔️ Técnicas e tecnologias utilizadas
 
 - ``PHP``
-- ``Templete utilizado https://colorlib.com/wp/template/login-form-v8/``
+- ``Template utilizado https://colorlib.com/wp/template/login-form-v8/``
 - 
 
 ## 📁 Acesso ao projeto
